@@ -3,12 +3,10 @@ package main
 import (
 	"fmt"
 	"strings"
-
-	"github.com/mnindrazaka/go-pos-oop/modules"
 )
 
 func main() {
-	shop := modules.Shop{Products: []modules.Product{
+	shop := Shop{Products: []Product{
 		{Name: "Pencil", Price: 3000},
 		{Name: "Book", Price: 3500},
 		{Name: "Eraser", Price: 2000},
@@ -36,10 +34,10 @@ func main() {
 			var price int
 			fmt.Scanf("%d", &price)
 
-			shop.AddProduct(modules.Product{Name: name, Price: price})
+			shop.AddProduct(Product{Name: name, Price: price})
 
 		} else if option == 2 {
-			transaction := modules.Transaction{Items: []modules.TransactionItem{}, Money: 0}
+			transaction := Transaction{Items: []TransactionItem{}, Money: 0}
 
 			for {
 				shop.PrintProductList()
@@ -54,7 +52,7 @@ func main() {
 				var amount int
 				fmt.Scanf("%d", &amount)
 
-				transaction.AddItem(modules.TransactionItem{Product: product, Amount: amount})
+				transaction.AddItem(TransactionItem{Product: product, Amount: amount})
 
 				fmt.Print("Do you want to add another product (y/n) ? ")
 				var repeatAnswer string

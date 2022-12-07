@@ -1,4 +1,4 @@
-package modules
+package main
 
 type TransactionItem struct {
 	Product Product

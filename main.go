@@ -6,11 +6,11 @@ import (
 )
 
 func main() {
-	shop := Shop{Products: []Product{
+	shop := NewShop([]Product{
 		{Name: "Pencil", Price: 3000},
 		{Name: "Book", Price: 3500},
 		{Name: "Eraser", Price: 2000},
-	}}
+	}, []Transaction{})
 
 	for {
 		fmt.Println("========================================")
@@ -37,7 +37,7 @@ func main() {
 			shop.AddProduct(Product{Name: name, Price: price})
 
 		} else if option == 2 {
-			transaction := Transaction{Items: []TransactionItem{}, Money: 0}
+			transaction := NewTransaction()
 
 			for {
 				shop.PrintProductList()
@@ -52,7 +52,7 @@ func main() {
 				var amount int
 				fmt.Scanf("%d", &amount)
 
-				transaction.AddItem(TransactionItem{Product: product, Amount: amount})
+				transaction.AddItem(NewTransactionItem(product, amount))
 
 				fmt.Print("Do you want to add another product (y/n) ? ")
 				var repeatAnswer string
@@ -62,6 +62,8 @@ func main() {
 					break
 				}
 			}
+
+			transaction.PrintStruct()
 
 			fmt.Print("Enter your money : ")
 			fmt.Scanf("%d", &transaction.Money)

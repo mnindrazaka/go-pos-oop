@@ -34,7 +34,7 @@ func main() {
 			var price int
 			fmt.Scanf("%d", &price)
 
-			shop.AddProduct(Product{Name: name, Price: price})
+			shop = shop.AddProduct(Product{Name: name, Price: price})
 
 		} else if option == 2 {
 			transaction := NewTransaction()
@@ -52,7 +52,7 @@ func main() {
 				var amount int
 				fmt.Scanf("%d", &amount)
 
-				transaction.AddItem(NewTransactionItem(product, amount))
+				transaction = transaction.AddItem(NewTransactionItem(product, amount))
 
 				fmt.Print("Do you want to add another product (y/n) ? ")
 				var repeatAnswer string

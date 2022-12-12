@@ -7,8 +7,8 @@ type Transaction struct {
 	Money int
 }
 
-func NewTransaction() *Transaction {
-	return &Transaction{Items: []TransactionItem{}, Money: 0}
+func NewTransaction() Transaction {
+	return Transaction{Items: []TransactionItem{}, Money: 0}
 }
 
 func (transaction Transaction) GetTotal() int {
@@ -25,8 +25,9 @@ func (transaction Transaction) GetChange() int {
 	return transaction.Money - transaction.GetTotal()
 }
 
-func (transaction *Transaction) AddItem(item TransactionItem) {
+func (transaction Transaction) AddItem(item TransactionItem) Transaction {
 	transaction.Items = append(transaction.Items, item)
+	return transaction
 }
 
 func (transaction Transaction) PrintStruct() {

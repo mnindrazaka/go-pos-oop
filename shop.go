@@ -7,15 +7,16 @@ type Shop struct {
 	Transaction []Transaction
 }
 
-func NewShop(products []Product, transactions []Transaction) *Shop {
-	return &Shop{Products: products, Transaction: transactions}
+func NewShop(products []Product, transactions []Transaction) Shop {
+	return Shop{Products: products, Transaction: transactions}
 }
 
-func (shop *Shop) AddProduct(product Product) {
+func (shop Shop) AddProduct(product Product) Shop {
 	shop.Products = append(shop.Products, product)
+	return shop
 }
 
-func (shop *Shop) PrintProductList() {
+func (shop Shop) PrintProductList() {
 	fmt.Println("Products list : ")
 	for index, product := range shop.Products {
 		fmt.Println((index + 1), ". ", product.Name, " : Rp.", product.Price)
